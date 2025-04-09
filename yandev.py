@@ -13,12 +13,15 @@ def loop(ser):
     
     bufferB = False
     bufferA = False
+    pyautogui.FAILSAFE = False
+    print("start")
     while True:
         x = ser.read(1)
         x = x.decode()
-        print(x)
-        print(f"buffer B {bufferB}")
-        print(f"buffer A: {bufferA}")
+        
+        # print(x)
+        # print(f"buffer B {bufferB}")
+        # print(f"buffer A: {bufferA}")            
         if x[0] == "A":
             # pyautogui.keyDown("space")
             bufferA = True     
@@ -32,9 +35,9 @@ def loop(ser):
             # pyautogui.keyUp("ctrlright")
             bufferB = False
         
-        if bufferB and bufferA:
+        if bufferB and bufferA:                
             pyautogui.keyDown("space")
-            print("Space Down")
+            # print("Space Down")                   
         else:
             pyautogui.keyUp("space")
 
